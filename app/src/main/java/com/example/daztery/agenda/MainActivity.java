@@ -38,7 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void Buscar(View view){
+        String nombre=txtNombre.getText().toString();
 
+        SharedPreferences preferences= getSharedPreferences("agenda",Context.MODE_PRIVATE);
+        String datos=preferences.getString(nombre,"");
+
+        if(datos.length()==0){
+            Toast.makeText(this,"No se encontró el registro",Toast.LENGTH_LONG).show();
+        }
+        else{
+            txtDescripcion.setText(datos);
+        }
 
 
     }
